@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Løkenes Gård — Fremtidsplan 2026</title>
+<style>
+  :root {
+    --green:#3B6D11;--green-light:#EAF3DE;--amber:#854F0B;--amber-light:#FAEEDA;
+    --blue:#185FA5;--blue-light:#E6F1FB;--red:#A32D2D;--red-light:#FCEBEB;
+    --gray:#5F5E5A;--gray-light:#F1EFE8;--text:#1a1a1a;--muted:#555;--border:rgba(0,0,0,0.11);
+    --r:12px;--rs:8px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--text);background:#fafaf8;line-height:1.65}
+  nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+  .nav-inner{max-width:1100px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;gap:0;overflow-x:auto;scrollbar-width:none}
+  .nav-logo{font-weight:700;font-size:15px;padding:1rem 1.5rem 1rem 0;white-space:nowrap;color:var(--green);border-right:1px solid var(--border);margin-right:0.5rem;flex-shrink:0}
+  .nb{padding:.85rem .9rem;font-size:13px;color:var(--muted);cursor:pointer;border:none;background:none;white-space:nowrap;border-bottom:2.5px solid transparent;transition:all .18s;flex-shrink:0}
+  .nb:hover{color:var(--text)}.nb.active{color:var(--green);border-bottom-color:var(--green);font-weight:500}
+  .sec{display:none;max-width:960px;margin:0 auto;padding:2.5rem 1.5rem 4rem}
+  .sec.active{display:block}
+
+  /* HERO */
+  .hero{border-radius:var(--r);overflow:hidden;position:relative;height:480px;margin-bottom:2rem;background:#3a5a20}
+  .hero img{width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block}
+  .hero-ov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.0) 30%,rgba(0,0,0,0.65) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:2.5rem}
+  .hero h1{color:#fff;font-size:2.4rem;font-weight:700;margin-bottom:.35rem;text-shadow:0 2px 8px rgba(0,0,0,.4)}
+  .hero p{color:rgba(255,255,255,.9);font-size:1.05rem;text-shadow:0 1px 4px rgba(0,0,0,.3)}
+  .hero-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:.9rem}
+  .hbadge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);color:#fff;font-size:12px;padding:4px 14px;border-radius:20px;backdrop-filter:blur(4px)}
+
+  /* PHOTO STRIP */
+  .strip{display:grid;grid-template-columns:2fr 1fr 1fr;gap:8px;margin:1.5rem 0;height:220px;border-radius:var(--r);overflow:hidden}
+  .strip img{width:100%;height:100%;object-fit:cover;display:block;background:#c8d8b0}
+
+  /* HORSE GRID */
+  .hgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:1.25rem 0}
+  .hcard{border-radius:var(--rs);overflow:hidden;position:relative;height:160px;background:#c8d8b0;cursor:default}
+  .hcard img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;transition:transform .3s}
+  .hcard:hover img{transform:scale(1.04)}
+  .hcard-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.72) 0%,transparent 55%);display:flex;flex-direction:column;justify-content:flex-end;padding:10px 12px}
+  .hcard-name{color:#fff;font-weight:700;font-size:14px;text-shadow:0 1px 3px rgba(0,0,0,.5)}
+  .hcard-owner{color:rgba(255,255,255,.82);font-size:12px}
+  .hcard.cristina{outline:2.5px solid #e09a30;outline-offset:-2px}
+
+  /* CARDS */
+  .card{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;margin-bottom:1.25rem}
+  .card.green{background:var(--green-light);border-color:#C0DD97}
+  .card.amber{background:var(--amber-light);border-color:#FAC775}
+  .card.blue{background:var(--blue-light);border-color:#B5D4F4}
+  .card.feat{border:2px solid #378ADD}
+  .card h2{font-size:1.1rem;font-weight:600;margin-bottom:.25rem}
+  .card .sub{font-size:13px;color:var(--muted);margin-bottom:.9rem}
+  .card p{font-size:14.5px;color:#333;margin-bottom:.7rem}.card p:last-child{margin-bottom:0}
+  .sec-title{font-size:1.5rem;font-weight:700;margin-bottom:.25rem}
+  .sec-lead{font-size:15px;color:var(--muted);margin-bottom:2rem;max-width:680px}
+
+  /* METRICS */
+  .mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;margin-bottom:1.25rem}
+  .metric{background:#f4f4f1;border-radius:var(--rs);padding:.9rem 1rem}
+  .ml{font-size:12px;color:var(--muted);margin-bottom:3px}.mv{font-size:1.35rem;font-weight:700}
+  .mv.blue{color:var(--blue)}.mv.green{color:var(--green)}.mv.red{color:var(--red)}
+
+  /* BADGE */
+  .badge{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;white-space:nowrap}
+  .badge.red{background:var(--red-light);color:var(--red)}.badge.amber{background:var(--amber-light);color:var(--amber)}
+  .badge.green{background:var(--green-light);color:var(--green)}.badge.blue{background:var(--blue-light);color:var(--blue)}
+  .badge.gray{background:var(--gray-light);color:var(--gray)}.badge.purple{background:#EEEDFE;color:#3C3489}
+
+  /* LISTS */
+  .rlist{list-style:none}
+  .rlist li{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);font-size:14px}
+  .rlist li:last-child{border-bottom:none}
+  .rt{font-weight:500;font-size:14px}.rs{font-size:12px;color:var(--muted);margin-top:2px}
+
+  /* TABLE */
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th{text-align:left;padding:6px 0;font-weight:600;border-bottom:2px solid var(--border)}
+  td{padding:5px 0;border-bottom:1px solid var(--border);vertical-align:top}
+  td:last-child{text-align:right;white-space:nowrap}
+  .ttotal td{font-weight:700;font-size:15px;border-top:2px solid var(--border);border-bottom:none;padding-top:8px}
+
+  /* SLIDER */
+  .slwrap{margin-bottom:1.1rem}.slwrap label{font-size:13px;color:var(--muted);display:block;margin-bottom:5px}
+  .slwrap input[type=range]{width:100%;accent-color:var(--green)}
+
+  /* RESULT */
+  .rbox{border-radius:var(--rs);padding:1.2rem;margin-top:1rem}
+  .rbox .rl{font-size:13px;margin-bottom:3px}.rbox .rv{font-size:1.9rem;font-weight:700}
+
+  /* TWO COL */
+  .tcol{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+
+  /* IMAGE FEATURE */
+  .img-feature{border-radius:var(--r);overflow:hidden;margin-bottom:1.5rem}
+  .img-feature img{width:100%;height:260px;object-fit:cover;display:block;background:#c8d8b0}
+
+  /* PRACTICE */
+  .pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:1rem}
+  .pcard{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:1.25rem}
+  .picon{font-size:1.5rem;margin-bottom:.5rem}.pcard h3{font-size:15px;font-weight:600;margin-bottom:.35rem}
+  .pcard p{font-size:13px;color:var(--muted);line-height:1.6;margin:0}
+
+  footer{background:#1c1c1a;color:rgba(255,255,255,.55);text-align:center;padding:2rem;font-size:13px;margin-top:2rem}
+  footer strong{color:rgba(255,255,255,.88)}
+
+  @media(max-width:620px){
+    .tcol{grid-template-columns:1fr}
+    .hero{height:340px}.hero h1{font-size:1.6rem}
+    .hgrid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+    .strip{grid-template-columns:1fr 1fr;height:auto}.strip img{height:120px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+  <div class="nav-logo">🐴 Løkenes Gård</div>
+  <button class="nb active" onclick="show('hero',this)">Gården</button>
+  <button class="nb" onclick="show('situation',this)">Situasjonen</button>
+  <button class="nb" onclick="show('altA',this)">Alt A: Vi overtar</button>
+  <button class="nb" onclick="show('altB',this)">Alt B: Cristina fortsetter</button>
+  <button class="nb" onclick="show('best',this)">Best practice</button>
+  <button class="nb" onclick="show('budget',this)">Budsjett</button>
+  <button class="nb" onclick="show('work',this)">Arbeidsplan</button>
+  <button class="nb" onclick="show('staller',this)">Andre staller</button>
+</div>
+</nav>
+
+<!-- ═══════════════ GÅRDEN ═══════════════ -->
+<div id="hero" class="sec active">
+
+  <!-- Hero: ridebanen med skyggen + fjorden — bilde1 fra siste batch -->
+  <div class="hero">
+    <img src="images/ridebane_skygge.jpg" alt="Ridebanen på Løkenes Gård med Oslofjorden"
+         onerror="this.src='images/lokenes_luftfoto.jpg'">
+    <div class="hero-ov">
+      <h1>Løkenes Gård</h1>
+      <p>Konglungen, Asker · Ridestall og beiteområde ved Oslofjorden</p>
+      <div class="hero-badges">
+        <span class="hbadge">18 bokser innendørs</span>
+        <span class="hbadge">3 utebokser</span>
+        <span class="hbadge">Konglungen Rideklubb</span>
+        <span class="hbadge">Utendørs ridebaner</span>
+        <span class="hbadge">450 mål natur</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tcol" style="margin-bottom:1.25rem">
+    <div class="card">
+      <div class="ml">Private heste-eiere</div>
+      <div class="mv blue">9</div>
+      <p style="font-size:13px;color:var(--muted);margin-top:8px">Erlend · Anne-Sophie · Ellen · Lajla · Ingvild · Serine · Thea · Ann-Helen · Jeanne</p>
+    </div>
+    <div class="card">
+      <div class="ml">Hester totalt på gården</div>
+      <div class="mv" style="color:#333">15</div>
+      <p style="font-size:13px;color:var(--muted);margin-top:8px">9 betalende + 6 tilhørende Cristina / Fredrikke</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Om Løkenes Gård</h2>
+    <p>Løkenes Gård på Konglungen i Asker er et vakkert og veletablert rideanlegg på ca. 450 mål, med nær tilgang til utmarksareal, ridevei langs fjorden og enestående naturomgivelser. Gården eies av familien Rustad. Konglungen Rideklubb drifter ridebanene og aktivitetene på anlegget og har rundt 90 medlemmer.</p>
+    <p>Vi som har hestene våre her er svært glade i dette stedet — og det er nettopp derfor vi ønsker å finne en fremtidsrettet og bærekraftig løsning for alle parter.</p>
+  </div>
+
+  <!-- Photo strip: fjordtur, gårdsinngang, hest foran låven -->
+  <div class="strip">
+    <img src="images/fjordtur.jpg" alt="Ridetur langs Oslofjorden"
+         onerror="this.src='images/ridebane_skygge.jpg'">
+    <img src="images/inngang_gaard.jpg" alt="Inngangen til Løkenes Gård"
+         onerror="this.src='images/lokenes_luftfoto.jpg'">
+    <img src="images/hest_foran_laven.jpg" alt="Hest foran låven på Løkenes"
+         onerror="this.src='images/flokk_beite.jpg'">
+  </div>
+
+  <h2 style="font-size:1.1rem;font-weight:600;margin-bottom:.25rem">Hestene på gården</h2>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">🟡 Oransj ramme = Cristina / Fredrikkes hester</p>
+  <div class="hgrid" id="hgrid"></div>
+</div>
+
+<!-- ═══════════════ SITUASJON ═══════════════ -->
+<div id="situation" class="sec">
+  <div class="sec-title">Situasjonen i dag</div>
+  <p class="sec-lead">Grunnlag for konstruktiv dialog — ikke som en anklage. Målet er en løsning som er bra for hestene, eierne og gården.</p>
+
+  <!-- Luftfoto som kontekstbilde -->
+  <div class="img-feature">
+    <img src="images/lokenes_luftfoto.jpg" alt="Løkenes Gård fra luften"
+         onerror="this.src='images/hest_foran_laven.jpg'">
+  </div>
+
+  <div class="card amber">
+    <h2>Bakgrunn</h2>
+    <p>Cristina Dorati har drevet Løkenes Gård siden 2003, opprinnelig med rideskole og egne hester. Hun er tidligere landslagsrytter i feltritt og trener 1-utdannet med lang erfaring. Rideskolen ble lagt ned av økonomiske årsaker, og driften er nå basert utelukkende på private oppstallører. Cristina og datteren Fredrikke har fremdeles seks egne hester på gården. Vi anerkjenner alt hun har lagt ned i dette stedet over mange år — og det er nettopp derfor vi ønsker en åpen samtale.</p>
+  </div>
+
+  <div class="card">
+    <h2>Utfordringer</h2>
+    <p class="sub">Skissert for å skape felles forståelse av situasjonen — ikke for å skylde på noen.</p>
+    <ul class="rlist" id="issues"></ul>
+  </div>
+
+  <div class="card">
+    <h2>Økonomi — dagens bilde</h2>
+    <div class="mgrid">
+      <div class="metric"><div class="ml">Månedsinntekt (private)</div><div class="mv blue">kr 64 800</div></div>
+      <div class="metric"><div class="ml">Betalende hester</div><div class="mv">9 stk</div></div>
+      <div class="metric"><div class="ml">Gratis plasser</div><div class="mv red">6 hester</div></div>
+      <div class="metric"><div class="ml">Andel uten betaling</div><div class="mv red">~33%</div></div>
+    </div>
+    <p style="font-size:14px;color:var(--muted)">De private eierne finansierer i praksis en vesentlig del av driften for Cristinas og Fredrikkes hester, uten at dette gjenspeiles i tjenestenivået de mottar.</p>
+  </div>
+</div>
+
+<!-- ═══════════════ ALT A ═══════════════ -->
+<div id="altA" class="sec">
+  <div class="sec-title">Alternativ A: Eiergruppen overtar driften</div>
+  <p class="sec-lead">Anbefalt scenario å presentere til Marianne (gårdeier). Vi inngår direkte driftsavtale og ansetter lønnet stallhjelp.</p>
+
+  <!-- Ridebane med fjord — viser hva vi vil ta vare på -->
+  <div class="img-feature" style="height:200px">
+    <img src="images/ridebane_skygge.jpg" alt="Ridebanen på Løkenes" style="height:200px;width:100%;object-fit:cover;object-position:center 30%"
+         onerror="this.src='images/fjordtur.jpg'">
+  </div>
+
+  <div class="card green">
+    <h2>Hva dette innebærer</h2>
+    <p>Eiergruppen overtar det fulle driftsansvaret under direkte avtale med Marianne Rustad. Vi ansetter lønnet stallhjelp til å håndtere det daglige stellet — dette løser det største problemet vi har i dag: at for mye tid og ansvar hviler på eiergruppen som ubetalte dugnadsarbeidere. Vi organiserer oss med klare roller og et lite styre, og fører åpen og transparent økonomi. Samarbeidet med Konglungen Rideklubb videreføres uendret.</p>
+  </div>
+
+  <div class="card feat">
+    <h2>Argumenter til Marianne</h2>
+    <p class="sub">Forretningscase for ny driftsavtale</p>
+    <ul class="rlist" id="marArgs"></ul>
+  </div>
+
+  <div class="card">
+    <h2>Interaktivt budsjett</h2>
+    <div class="slwrap">
+      <label>Ekstra bokser til nye oppstallører: <strong id="ev">3</strong> → ekstrainntekt <strong id="ei">kr 21 600</strong>/mnd</label>
+      <input type="range" min="0" max="9" value="3" id="esl" oninput="calcB()">
+    </div>
+    <div class="slwrap">
+      <label>Lønnet stallhjelp timer/mnd (à 200 kr/t): <strong id="sv">30</strong>t = <strong id="sc">kr 6 000</strong>/mnd</label>
+      <input type="range" min="0" max="80" value="30" step="5" id="ssl" oninput="calcB()">
+    </div>
+    <table id="btab"></table>
+    <div class="rbox" id="rbox"></div>
+  </div>
+
+  <div class="card">
+    <h2>Driftsstruktur</h2>
+    <ul class="rlist" id="roles"></ul>
+  </div>
+
+  <div class="card amber">
+    <h2>Om Cristinas og Fredrikkes hester</h2>
+    <p>De seks hestene (Angelo, Tessa, Buddy Friman, Dario, Scalas, Equitana) ønskes velkomne videre på disse premissene:</p>
+    <ul class="rlist" id="crlist"></ul>
+  </div>
+</div>
+
+<!-- ═══════════════ ALT B ═══════════════ -->
+<div id="altB" class="sec">
+  <div class="sec-title">Alternativ B: Cristina fortsetter — med betingelser</div>
+  <p class="sec-lead">Presenteres til Cristina direkte, som et tilbud om en ny start på et bedre grunnlag.</p>
+
+  <div class="card amber">
+    <h2>Vår holdning</h2>
+    <p>Vi ønsker Cristina og Fredrikke det aller beste, og vi vet at dette stedet betyr enormt mye for dem begge. Nettopp fordi vi bryr oss, ønsker vi en åpen og ærlig samtale. Vi tror på at det er mulig å finne en vei videre som fungerer for alle — men det krever at noen fundamentale ting endres.</p>
+  </div>
+
+  <div class="card">
+    <h2>Betingelser — ikke forhandlbare</h2>
+    <ul class="rlist" id="conds"></ul>
+  </div>
+
+  <div class="card green">
+    <h2>Hva vi tilbyr til gjengjeld</h2>
+    <ul class="rlist" id="offers"></ul>
+  </div>
+
+  <div class="card">
+    <h2>3-måneders evalueringsplan</h2>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:.5rem">
+      <div style="flex:1;min-width:190px;background:#f4f4f1;border-radius:8px;padding:1rem">
+        <div style="font-weight:600;margin-bottom:4px">Måned 1</div>
+        <div style="font-size:13px;color:var(--muted)">Oppstartsmøte. Skriftlig avtale signeres av alle parter. Vedlikeholdsplan leveres.</div>
+      </div>
+      <div style="flex:1;min-width:190px;background:#f4f4f1;border-radius:8px;padding:1rem">
+        <div style="font-weight:600;margin-bottom:4px">Måned 2</div>
+        <div style="font-size:13px;color:var(--muted)">Midtveisevaluering. Er betingelsene overholdt? Åpen tilbakemelding begge veier.</div>
+      </div>
+      <div style="flex:1;min-width:190px;background:#f4f4f1;border-radius:8px;padding:1rem">
+        <div style="font-weight:600;margin-bottom:4px">Måned 3</div>
+        <div style="font-size:13px;color:var(--muted)">Sluttevaluering: videreføring, justering — eller overgang til Alternativ A.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ BEST PRACTICE ═══════════════ -->
+<div id="best" class="sec">
+  <div class="sec-title">Best practice: Slik drives en god privat stall</div>
+  <p class="sec-lead">Basert på norsk og nordeuropeisk hestedrift. Til inspirasjon for hva vi ønsker å bygge på Løkenes.</p>
+
+  <!-- Action-bilde: rytter gjennom vann -->
+  <div class="img-feature">
+    <img src="images/rytter_vann.jpg" alt="Rytter gjennom vanndam på Løkenes"
+         onerror="this.src='images/feltritt_norsk_flagg.jpg'">
+  </div>
+
+  <div class="pgrid" id="pgrid"></div>
+</div>
+
+<!-- ═══════════════ BUDSJETT ═══════════════ -->
+<div id="budget" class="sec">
+  <div class="sec-title">Detaljert budsjett</div>
+  <p class="sec-lead">Sammenligning av de to alternativene, måned for måned.</p>
+  <div style="display:flex;gap:8px;margin-bottom:1.5rem;flex-wrap:wrap">
+    <button class="nb active" id="bA" onclick="showB('a')">Alt A: Eiergruppen overtar</button>
+    <button class="nb" id="bB" onclick="showB('b')">Alt B: Cristina fortsetter</button>
+  </div>
+  <div class="card" id="bcard"></div>
+</div>
+
+<!-- ═══════════════ ARBEIDSPLAN ═══════════════ -->
+<div id="work" class="sec">
+  <div class="sec-title">Arbeidsplan og vaktordning</div>
+  <p class="sec-lead">Oversikt over alle oppgaver — med og uten lønnet stallhjelp.</p>
+
+  <div class="card">
+    <h2>Daglige og ukentlige oppgaver</h2>
+    <ul class="rlist" id="tasks"></ul>
+  </div>
+
+  <div class="card feat">
+    <h2>Beregn fordeling</h2>
+    <div class="slwrap" style="margin-top:.75rem">
+      <label>Aktive bidragsytere blant eiere: <strong id="pv">7</strong></label>
+      <input type="range" min="3" max="9" value="7" id="psl" oninput="calcW()">
+    </div>
+    <label style="display:flex;align-items:center;gap:10px;font-size:14px;margin-bottom:1rem;cursor:pointer">
+      <input type="checkbox" id="stchk" checked onchange="calcW()">
+      Lønnet stallhjelp tar morgen, kveld og møkking på hverdager
+    </label>
+    <div class="mgrid" id="wmet"></div>
+    <p id="wnote" style="font-size:13px;color:var(--muted);margin-top:.5rem"></p>
+  </div>
+
+  <div class="card">
+    <h2>Vaktordning — forslag</h2>
+    <ul class="rlist" id="shifts"></ul>
+  </div>
+</div>
+
+<!-- ═══════════════ ANDRE STALLER ═══════════════ -->
+<div id="staller" class="sec">
+  <div class="sec-title">Andre staller i området</div>
+  <p class="sec-lead">Plan B og forhandlingskort. Kontakt stallene direkte for bekreftede priser og kapasitet.</p>
+
+  <div class="card blue">
+    <h2>Alternativ C: Flytte stallen</h2>
+    <p>Det er viktig at eiergruppen vet at dere har valg. Oversikten gir dere styrke i forhandlingene — vi anbefaler ikke å flytte dersom vi kan få til en god løsning på Løkenes, men det er godt å vite at det finnes alternativer.</p>
+  </div>
+  <div id="stabgrid"></div>
+  <div class="card amber">
+    <h2>Kostnader ved å flytte</h2>
+    <ul class="rlist" id="movecost"></ul>
+  </div>
+</div>
+
+<footer>
+  <strong>Løkenes Gård — Fremtidsplan 2026</strong><br>
+  Intern arbeidsmappe for eiergruppen · Konfidensielt
+</footer>
+
+<script>
+const NOK = n => 'kr ' + Math.round(n).toLocaleString('no-NO');
+
+/* ─── HESTE-DATA med filnavn basert på det vi vet ─── */
+const horses = [
+  { o:'Ellen',      h:'Aventura',   img:'images/aventura.jpg',   fb:'images/dressyr_stevne.jpg' },
+  { o:'Erlend',     h:'Ludde',      img:'images/ludde.jpg',      fb:'images/hester_beite_fjord.jpg' },
+  { o:'Anne-Sophie',h:'Coventina',  img:'images/coventina.jpg',  fb:'images/rytter_vann.jpg' },
+  { o:'Lajla',      h:'Konnie',     img:'images/konnie.jpg',     fb:'images/palomino_gaard.jpg' },
+  { o:'Ingvild',    h:'Erwin',      img:'images/erwin.jpg',      fb:'images/graa_hest_hopp.jpg' },
+  { o:'Serine',     h:'Jasse',      img:'images/jasse.jpg',      fb:'images/hester_beite_fjord.jpg' },
+  { o:'Thea',       h:'Darius',     img:'images/darius.jpg',     fb:'images/feltritt_norsk_flagg.jpg' },
+  { o:'Ann-Helen',  h:'Maji',       img:'images/maji.jpg',       fb:'images/hest_portrett_sort.jpg' },
+  { o:'Jeanne',     h:'Iggy',       img:'images/iggy.jpg',       fb:'images/hest_foran_laven.jpg' },
+];
+const cHorses = [
+  { o:'Cristina',   h:'Angelo',       img:'images/angelo.jpg',      fb:'images/tre_ryttere_snoe.jpg' },
+  { o:'Cristina',   h:'Tessa',        img:'images/tessa.jpg',       fb:'images/hester_beite_fjord.jpg' },
+  { o:'Cristina',   h:'Buddy Friman', img:'images/buddy_friman.jpg',fb:'images/palomino_gaard.jpg' },
+  { o:'Fredrikke',  h:'Dario',        img:'images/dario.jpg',       fb:'images/hest_portrett_sort.jpg' },
+  { o:'Fredrikke',  h:'Scalas',       img:'images/scalas.jpg',      fb:'images/hest_foran_laven.jpg' },
+  { o:'Fredrikke',  h:'Equitana',     img:'images/equitana.jpg',    fb:'images/flokk_solen.jpg' },
+];
+
+function buildHorseGrid() {
+  const g = document.getElementById('hgrid');
+  const all = [
+    ...horses.map(h => ({...h, cristina:false})),
+    ...cHorses.map(h => ({...h, cristina:true}))
+  ];
+  g.innerHTML = all.map(h => `
+    <div class="hcard ${h.cristina ? 'cristina' : ''}">
+      <img src="${h.img}" alt="${h.h}" loading="lazy"
+           onerror="this.onerror=null;this.src='${h.fb}'">
+      <div class="hcard-ov">
+        <div class="hcard-name">${h.h}</div>
+        <div class="hcard-owner">${h.o}</div>
+      </div>
+    </div>`).join('');
+}
+
+/* ─── NAV ─── */
+function show(id, btn) {
+  document.querySelectorAll('.sec').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nb').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if (btn) btn.classList.add('active');
+}
+
+/* ─── CONTENT ─── */
+document.getElementById('issues').innerHTML = [
+  {t:'Bestemmelsesrett: Cristina tar beslutninger om flokksammensetning, paddock og beite. Eierne opplever liten mulighet til å påvirke rammene rundt egne hester.',s:'red'},
+  {t:'Kommunikasjonsklima: Stemningen er tidvis anspent og uforutsigbar, noe som gjør det krevende å ta opp saker åpent og konstruktivt. Særlig barna opplever dette belastende.',s:'red'},
+  {t:'Cristinas og Fredrikkes seks hester har fortrinnsrett på de største paddockene og beste beiteområdene — noe som oppleves som urettferdig av de betalende eierne.',s:'red'},
+  {t:'Pris vs. tilbud: 7 200 kr/mnd uten ridehus. Det meste av vedlikehold hviler på eiergruppen gjennom dugnad uten godtgjørelse.',s:'amber'},
+  {t:'Vedlikeholdet er ikke tilstrekkelig — gjerder, utstyr og fasiliteter forfaller uten systematisk utbedring.',s:'amber'},
+  {t:'Cristinas økonomi er under press, noe som påvirker driftskapasiteten. Leiebetaling til gårdeier har tidvis vært forsinket.',s:'amber'},
+  {t:'Driftsmodellen gjenspeiler en tid da Cristina eide alle hestene. I dag er eiernes autonomi og medbestemmelse vesentlig redusert.',s:'amber'},
+].map(i => `<li><span class="badge ${i.s}">${i.s==='red'?'Kritisk':'Viktig'}</span><span>${i.t}</span></li>`).join('');
+
+document.getElementById('marArgs').innerHTML = [
+  'Stabil og forutsigbar månedlig leieinntekt — betalt til fastsatt tid',
+  'Ingen risiko for leierestanse slik dagens situasjon innebærer',
+  'Aktivt vedlikehold av anlegget — vi har direkte egeninteresse',
+  'Videreføring av samarbeidet med Konglungen Rideklubb uendret',
+  'Mulighet til å fylle ledige bokser og øke inntekten til gården',
+  'Profesjonell, transparent driftsstruktur med navngitt kontaktperson',
+].map(a => `<li><span style="color:var(--green);font-weight:700;font-size:16px">✓</span><span>${a}</span></li>`).join('');
+
+document.getElementById('roles').innerHTML = [
+  {r:'Driftsansvarlig (roterer hvert 6. mnd)', a:'Koordinerer daglig drift, kontakt med Marianne og leverandører, siste ord ved uenighet'},
+  {r:'Økonomiansvarlig (fast)', a:'Innkrever månedlig betaling, betaler leie og regninger, enkel regnskapsføring'},
+  {r:'Vedlikeholdsansvarlig', a:'Vedlikeholdsplan, innhenter tilbud, organiserer dugnader for større jobber'},
+  {r:'Velferds- og flokkansvarlig', a:'Koordinerer flokksammensetning og paddock-fordeling i dialog med alle eiere'},
+  {r:'Stallhjelp — lønnet, ekstern', a:'Morgen- og/eller kveldsstell. Frigjør eierne fra daglig obligatorisk tilstedeværelse'},
+].map(r => `<li><div><div class="rt">${r.r}</div><div class="rs">${r.a}</div></div></li>`).join('');
+
+document.getElementById('crlist').innerHTML = [
+  'Tilbys å bli med som ordinære oppstallører til markedspris (7 200 kr/mnd per hest)',
+  'Ingen automatisk fortrinnsrett på paddock, beite eller flokksammensetning',
+  'Overgangsperiode på 3 måneder for å tilpasse seg ny situasjon',
+  'Cristina kan eventuelt tilbys en lønnet bistilling som stallhjelp basert på sin lange erfaring',
+].map(c => `<li><span style="color:var(--amber)">→</span><span>${c}</span></li>`).join('');
+
+document.getElementById('conds').innerHTML = [
+  {k:'Heste-eierne har full bestemmelsesrett over egne hester, inkludert valg av trener, ridestil og håndteringsmetoder', f:'Fra avtalesignering', s:'red'},
+  {k:'Flokksammensetning og paddock-/beitefordeling avgjøres i fellesskap. Cristinas hester har ikke automatisk fortrinnsrett', f:'Fra avtalesignering', s:'red'},
+  {k:'Kommunikasjonen i stallen skal preges av respekt. Alle — og særlig barn og unge — skal føle seg trygge og velkomne', f:'Fra avtalesignering', s:'red'},
+  {k:'Månedlig driftsmøte med alle eiere — med skriftlig referat', f:'Innen 2 uker', s:'amber'},
+  {k:'Skriftlig vedlikeholdsplan med ansvarlig og frist for hvert punkt', f:'Innen 1 måned', s:'amber'},
+  {k:'Cristinas leiesituasjon med Marianne avklares og betales ned', f:'Innen 2 måneder', s:'amber'},
+  {k:'Dugnadsbyrden fordeles rettferdig mellom alle parter, inkludert Cristina og Fredrikke', f:'Innen 1 måned', s:'amber'},
+].map(c => `<li><span class="badge ${c.s}">${c.s==='red'?'Kritisk':'Viktig'}</span><div><div class="rt">${c.k}</div><div class="rs">Frist: ${c.f}</div></div></li>`).join('');
+
+document.getElementById('offers').innerHTML = [
+  'Vi fortsetter å bidra på dugnader — fordelt rettferdig mellom alle',
+  'Vi støtter søknad om ekstern finansiering eller støttemidler for vedlikehold',
+  'Vi er åpne for at Cristina fortsatt har en sentral og verdsatt rolle på gården',
+  'Vi ønsker konstruktiv dialog — ikke konflikt',
+].map(o => `<li><span style="color:var(--green);font-weight:700;font-size:16px">✓</span><span>${o}</span></li>`).join('');
+
+document.getElementById('pgrid').innerHTML = [
+  {i:'💰', t:'Transparent økonomi', p:'Alle mottar månedlig budsjettsammendrag. Prisene dekker faktiske kostnader pluss buffer. Ingen hester bor gratis.'},
+  {i:'👩‍🌾', t:'Lønnet stallhjelp', p:'Minst én lønnet person tar morgen- og kveldsstell på hverdager. Eiere bidrar i helgene og etter evne.'},
+  {i:'📋', t:'Faste møter og skriftlighet', p:'Månedlige stallmøter med fast agenda: økonomi, vedlikehold og dyrevelferd. Beslutninger skrives ned.'},
+  {i:'🐴', t:'Heste-eierautonomi', p:'Hver eier bestemmer selv: trener, vet, hovslager, fôrtype og håndteringsmetode.'},
+  {i:'🔧', t:'Vedlikeholdsplan', p:'Skriftlig vedlikeholdsplan hvert år. Dugnader planlegges i god tid — 2–4 pr. år for større jobber.'},
+  {i:'🌿', t:'Dyrevelferd som standard', p:'Flokksammensetning og paddock-tid styres av hestenes behov, ikke eierskap. Alle hester ut hver dag.'},
+  {i:'🤝', t:'Godt klima', p:'Alle behandles med respekt uansett erfaring. Konflikter løses tidlig gjennom åpen dialog.'},
+  {i:'📊', t:'Buffer og bærekraft', p:'Vedlikeholdsfond bygges opp gradvis fra overskudd. Driften tåler at én boks står tom i perioder.'},
+].map(p => `<div class="pcard"><div class="picon">${p.i}</div><h3>${p.t}</h3><p>${p.p}</p></div>`).join('');
+
+/* ─── INTERACTIVE BUDGET ─── */
+function calcB() {
+  const ex = +document.getElementById('esl').value, st = +document.getElementById('ssl').value;
+  document.getElementById('ev').textContent = ex;
+  document.getElementById('ei').textContent = NOK(ex * 7200);
+  document.getElementById('sv').textContent = st;
+  document.getElementById('sc').textContent = NOK(st * 200);
+  const sc=st*200, br=(9+ex)*1000, fo=9*800, bf=9*300, kp=9*400, mn=8000, fl=3500, ins=1500, misc=2000;
+  const tc=br+fo+bf+kp+mn+fl+ins+sc+misc, inc=64800+ex*7200, sur=inc-tc;
+  document.getElementById('btab').innerHTML =
+    `<thead><tr><th>Post</th><th style="text-align:right">Beløp/mnd</th></tr></thead><tbody>` +
+    [['Boksleie Marianne ('+(9+ex)+'× 1 000)', br,'c'],
+     ['Høy og betfiber (9 hester)', fo+bf,'c'],
+     ['Komplett fôr (9 hester)', kp,'c'],
+     ['Tømming av møkk (2 × 4 000)', mn,'c'],
+     ['Flis / strø', fl,'c'],
+     ['Lønnet stallhjelp ('+st+'t × 200)', sc,'c'],
+     ['Forsikring / ansvar', ins,'c'],
+     ['Vedlikeholdsbuffer', misc,'c'],
+     ['— Sum kostnader', tc,'tc'],
+     ['Inntekt private eiere (9 × 7 200)', 64800,'i'],
+     ...(ex>0?[['Inntekt nye bokser ('+ex+' × 7 200)', ex*7200,'i']]:[]),
+     ['— Sum inntekter', inc,'ti']
+    ].map(([k,v,t]) =>
+      t==='tc' ? `<tr class="ttotal"><td>${k}</td><td style="color:var(--red)">${NOK(v)}</td></tr>` :
+      t==='ti' ? `<tr class="ttotal"><td>${k}</td><td style="color:var(--green)">${NOK(v)}</td></tr>` :
+      t==='c'  ? `<tr><td style="color:var(--muted)">${k}</td><td style="color:var(--red)">${NOK(v)}</td></tr>` :
+                 `<tr><td style="color:var(--muted)">${k}</td><td style="color:var(--green)">${NOK(v)}</td></tr>`
+    ).join('') + '</tbody>';
+  const rb = document.getElementById('rbox');
+  rb.style.cssText = `background:${sur>=0?'var(--green-light)':'var(--red-light)'};border:1px solid ${sur>=0?'#C0DD97':'#F7C1C1'}`;
+  rb.innerHTML = `<div class="rl" style="color:${sur>=0?'var(--green)':'var(--red)'}">Netto overskudd / underskudd per måned</div>
+    <div class="rv" style="color:${sur>=0?'var(--green)':'var(--red)'}">${NOK(sur)}</div>
+    <p style="font-size:13px;color:${sur>=0?'var(--green)':'var(--red)'};margin-top:6px">
+    ${sur>=0?'Overskuddet settes av til vedlikeholdsfond.':'Øk antall bokser eller reduser stallhjelp-timer.'}</p>`;
+}
+calcB();
+
+/* ─── STATIC BUDGET ─── */
+const bdata = {
+  a: { l:'Alternativ A — eiergruppen overtar (med stallhjelp)',
+       inc:[['Private oppstallører (9 × 7 200)',64800],['Nye bokser, estimert 3 × 7 200',21600]],
+       cos:[['Boksleie Marianne (12 × 1 000)',12000],['Høy og betfiber (9 hester)',9900],
+            ['Komplett fôr (9 hester)',3600],['Tømming av møkk (2 × 4 000)',8000],
+            ['Flis / strø',3500],['Lønnet stallhjelp (30t × 200)',6000],
+            ['Vet / medisin buffer',2000],['Strøm, vann, avg.',2500],
+            ['Forsikring stall / ansvar',1500],['Vedlikeholdsfond',3000],['Diverse / admin',1500]] },
+  b: { l:'Alternativ B — Cristina fortsetter',
+       inc:[['Private oppstallører (9 × 7 200)',64800]],
+       cos:[['Boksleie Marianne (15 × 1 000)',15000],['Høy og betfiber (15 hester)',16500],
+            ['Komplett fôr (15 hester)',6000],['Tømming av møkk (2 × 4 000)',8000],
+            ['Flis / strø',5000],['Cristinas arbeid',0],['Vet / buffer',2000],
+            ['Strøm, vann',2500],['Diverse',1000]] }
+};
+function showB(s) {
+  document.getElementById('bA').classList.toggle('active', s==='a');
+  document.getElementById('bB').classList.toggle('active', s==='b');
+  const b=bdata[s], ti=b.inc.reduce((a,r)=>a+r[1],0), tc=b.cos.reduce((a,r)=>a+r[1],0), res=ti-tc;
+  document.getElementById('bcard').innerHTML = `<h2>${b.l}</h2>
+    <h3 style="font-size:14px;font-weight:600;margin:1rem 0 .5rem;color:var(--green)">Inntekter</h3>
+    <table><tbody>${b.inc.map(([k,v])=>`<tr><td style="color:var(--muted)">${k}</td><td style="color:var(--green)">${NOK(v)}</td></tr>`).join('')}
+    <tr class="ttotal"><td>Sum inntekter</td><td style="color:var(--green)">${NOK(ti)}</td></tr></tbody></table>
+    <h3 style="font-size:14px;font-weight:600;margin:1.25rem 0 .5rem;color:var(--red)">Kostnader</h3>
+    <table><tbody>${b.cos.map(([k,v])=>`<tr><td style="color:var(--muted)">${k}</td><td style="color:var(--red)">${v===0?'—':NOK(v)}</td></tr>`).join('')}
+    <tr class="ttotal"><td>Sum kostnader</td><td style="color:var(--red)">${NOK(tc)}</td></tr></tbody></table>
+    <div class="rbox" style="background:${res>=0?'var(--green-light)':'var(--red-light)'};border:1px solid ${res>=0?'#C0DD97':'#F7C1C1'}">
+      <div class="rl" style="color:${res>=0?'var(--green)':'var(--red)'}">Netto resultat per måned</div>
+      <div class="rv" style="color:${res>=0?'var(--green)':'var(--red)'}">${NOK(res)}</div></div>`;
+}
+showB('a');
+
+/* ─── WORK ─── */
+const tdata = [
+  {t:'Morgenrunde — slipp ut og fôring runde 1', tid:'06:30–08:30', h:2, f:'Daglig', st:true},
+  {t:'Fôring runde 2 (lunsj/formiddag)',          tid:'11:00–12:00', h:1, f:'Daglig', st:false},
+  {t:'Fôring runde 3 (ettermiddag)',               tid:'15:00–16:00', h:1, f:'Daglig', st:false},
+  {t:'Kveldsrunde — inn og fôring runde 4',        tid:'18:00–20:00', h:2, f:'Daglig', st:true},
+  {t:'Møkking av bokser',                          tid:'Morgen / kveld', h:1.5, f:'Daglig', st:true},
+  {t:'Vanning, strø og tilsyn',                    tid:'Fordeles', h:0.5, f:'Daglig', st:false},
+  {t:'Innkjøp fôr / strø, leverandørkontakt',     tid:'Fleksibelt', h:2, f:'Ukentlig', st:false},
+  {t:'Vedlikehold / dugnad',                       tid:'Helg', h:3, f:'Ukentlig', st:false},
+  {t:'Administrasjon (økonomi, møter)',             tid:'Fleksibelt', h:2, f:'Ukentlig', st:false},
+];
+document.getElementById('tasks').innerHTML = tdata.map(t =>
+  `<li>
+    <span class="badge ${t.f==='Daglig'?'amber':'blue'}">${t.f}</span>
+    <div style="flex:1"><div class="rt">${t.t}</div><div class="rs">${t.tid}</div></div>
+    <span class="badge ${t.st?'purple':'gray'}">${t.st?'Stallhjelp':'Eiere'}</span>
+    <span style="font-size:13px;color:var(--muted);white-space:nowrap">${t.h}t</span>
+  </li>`).join('');
+
+function calcW() {
+  const p = +document.getElementById('psl').value, hs = document.getElementById('stchk').checked;
+  document.getElementById('pv').textContent = p;
+  const ot = hs ? tdata.filter(t=>!t.st) : tdata;
+  const dh = ot.filter(t=>t.f==='Daglig').reduce((s,t)=>s+t.h,0);
+  const we = ot.filter(t=>t.f==='Ukentlig').reduce((s,t)=>s+t.h,0);
+  const tot = Math.round(dh*7+we), pp = (tot/p).toFixed(1);
+  document.getElementById('wmet').innerHTML = `
+    <div class="metric"><div class="ml">Timer pr uke totalt</div><div class="mv">${tot}t</div></div>
+    <div class="metric"><div class="ml">Per person per uke</div><div class="mv blue">${pp}t</div></div>
+    <div class="metric"><div class="ml">Ca. vakter per uke</div><div class="mv">${Math.ceil(pp/2)}–${Math.ceil(pp/1.5)}</div></div>`;
+  document.getElementById('wnote').textContent = hs
+    ? `Med lønnet stallhjelp for morgen/kveld og møkking på hverdager: kun ${pp} timer pr. uke per person. Meget håndterbart.`
+    : `Uten lønnet hjelp: ${pp} timer pr. uke per person. Morgenstell kl. 06:30 er krevende kombinert med jobb og familieliv.`;
+}
+calcW();
+
+document.getElementById('shifts').innerHTML = [
+  {o:'Ukevakt-rotasjon (anbefalt)', b:'Én person er totalansvarlig for koordinering en hel uke. Roterer mellom alle eiere. Forutsigbart og klart.'},
+  {o:'Delt morgen/kveld', b:'Morgen- og kveldsvakt settes opp separat. Passer for de med faste forpliktelser deler av uken.'},
+  {o:'Digital bytteordning', b:'Delt kalender eller app (WhatsApp, Stable e.l.) for å bytte vakter enkelt.'},
+].map(s => `<li><div><div class="rt">${s.o}</div><div class="rs">${s.b}</div></div></li>`).join('');
+
+document.getElementById('stabgrid').innerHTML = [
+  {n:'Fossum Rideanlegg',    s:'Bærum',        d:'~10 km', p:'6 500–7 500', rh:true,  nt:'Etablert anlegg med ridehus. Aktivt rideklubbmiljø.'},
+  {n:'Bjørnegård Rideskole', s:'Bærum',        d:'~12 km', p:'6 500–8 000', rh:true,  nt:'Rideskole med private plasser. God infrastruktur.'},
+  {n:'Høvik Rideanlegg',     s:'Bærum',        d:'~14 km', p:'ca. 7 000',   rh:true,  nt:'Godt vedlikeholdt. Sjekk ledig kapasitet direkte.'},
+  {n:'Søndre Borgen Gård',   s:'Vestby',       d:'~35 km', p:'5 500–6 500', rh:true,  nt:'Lengre unna, men lavere pris. Nyere anlegg.'},
+  {n:'Privat boks-leie',     s:'Asker-regionen',d:'Varierer',p:'2 500–4 500',rh:false, nt:'Noen gårder leier ut enkeltbokser. Full kontroll, men full egendriving.'},
+].map(s => `
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:.5rem">
+      <div>
+        <div style="font-weight:600;font-size:15px">${s.n}</div>
+        <div style="font-size:13px;color:var(--muted)">${s.s} · ${s.d}</div>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <span class="badge blue">kr ${s.p}/mnd</span>
+        <span class="badge ${s.rh?'green':'gray'}">${s.rh?'Har ridehus':'Uten ridehus'}</span>
+      </div>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin:0">${s.nt}</p>
+  </div>`).join('');
+
+document.getElementById('movecost').innerHTML = [
+  'Transport per hest: ca. 1 500–3 000 kr avhengig av avstand',
+  'Stress og tilvenning for hestene ved nytt miljø og ny flokk',
+  'Mulig at ikke alle får plass på samme stall — flokkdynamikken brytes',
+  'Konglungen Rideklubb-tilknytningen bortfaller',
+  'Ny innmeldingsavgift i eventuell ny rideklubb',
+].map(p => `<li><span style="color:var(--amber);font-weight:700">!</span><span>${p}</span></li>`).join('');
+
+buildHorseGrid();
+</script>
+</body>
+</html>
