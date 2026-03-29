@@ -123,6 +123,7 @@
   <button class="nb" onclick="show('altA',this)">Alt A: Vi overtar</button>
   <button class="nb" onclick="show('altB',this)">Alt B: Cristina fortsetter</button>
   <button class="nb" onclick="show('best',this)">Best practice</button>
+  <button class="nb" onclick="show('hestelov',this)">Heste-loven</button>
   <button class="nb" onclick="show('budget',this)">Budsjett</button>
   <button class="nb" onclick="show('work',this)">Arbeidsplan</button>
   <button class="nb" onclick="show('staller',this)">Andre staller</button>
@@ -359,16 +360,55 @@
   </div>
 </div>
 
+<!-- ═══════════════ HESTE-LOV ═══════════════ -->
+<div id="hestelov" class="sec">
+  <div class="sec-title">Lovverk — hestens rettigheter</div>
+  <p class="sec-lead">Norsk lov gir hesten konkrete rettigheter som forplikter enhver drifter av en stall.</p>
+
+  <div class="card blue">
+    <h2>Dyrevelferdsloven § 4 — hestehold</h2>
+    <p style="font-style:italic;border-left:3px solid #378ADD;padding-left:1rem;margin:0.75rem 0">"Ved alt hold og bruk av hest skal det tas hensyn til hestens adferdsmessige, sosiale og fysiologiske behov, og hesten skal beskyttes mot fare for unødig stress, smerte og lidelse. Det skal legges til rette for at hest kan holdes i grupper der beite inngår."</p>
+    <p style="font-size:13px;color:var(--muted)">Kilde: Dyrevelferdsloven, Landbruks- og matdepartementet</p>
+  </div>
+
+  <div class="card green">
+    <h2>Hva loven betyr i praksis for oss</h2>
+    <ul class="rlist">
+      <li><span style="color:var(--green);font-weight:700">✓</span><span><strong>Flokkliv er en lovfestet rett</strong> — hester skal ha mulighet til å holdes i grupper. Beslutninger om flokksammensetning må ta utgangspunkt i hestenes behov, ikke praktisk bekvemmelighet eller eierforhold.</span></li>
+      <li><span style="color:var(--green);font-weight:700">✓</span><span><strong>Beite inngår</strong> — loven sier eksplisitt at det skal legges til rette for beite. Hester som systematisk nektes tilgang til beite er i strid med loven.</span></li>
+      <li><span style="color:var(--green);font-weight:700">✓</span><span><strong>Fri tilgang til grovfôr</strong> — hesten har lovfestet rett til stimulerende aktiviteter, bevegelse, hvile og naturlig atferd, herunder god tilgang til grovfôr ut over døgnet.</span></li>
+      <li><span style="color:var(--green);font-weight:700">✓</span><span><strong>Trygghet og trivsel</strong> — dyrs levemiljø skal fremme god helse og bidra til trygghet og trivsel. Et klima preget av frykt og stress er i strid med lovens intensjon.</span></li>
+    </ul>
+  </div>
+
+  <div class="card amber">
+    <h2>Relevans for situasjonen på Løkenes</h2>
+    <p>Når drifter av en stall tar flokkbeslutninger basert på egne hesteres fortrinnsrett fremfor hestenes adferdsmessige og sosiale behov, er dette i strid med dyrevelferdsloven § 4. Som heste-eiere har vi ikke bare en rett, men en plikt til å sikre at våre hester holdes i samsvar med loven — uavhengig av hvem som drifter stallen.</p>
+    <p style="margin:0">Dette gir eiergruppen et solid juridisk grunnlag i dialogen med både Cristina og Marianne.</p>
+  </div>
+</div>
+
 <!-- ═══════════════ ANDRE STALLER ═══════════════ -->
 <div id="staller" class="sec">
   <div class="sec-title">Andre staller i området</div>
-  <p class="sec-lead">Plan B og forhandlingskort. Kontakt stallene direkte for bekreftede priser og kapasitet.</p>
+  <p class="sec-lead">Plan B og forhandlingskort — innhentet av Jeanne. Klikk på FINN-lenkene for oppdatert info og bilder.</p>
 
   <div class="card blue">
     <h2>Alternativ C: Flytte stallen</h2>
-    <p>Det er viktig at eiergruppen vet at dere har valg. Oversikten gir dere styrke i forhandlingene — vi anbefaler ikke å flytte dersom vi kan få til en god løsning på Løkenes, men det er godt å vite at det finnes alternativer.</p>
+    <p>Det er viktig at eiergruppen vet at dere har valg. Oversikten under gir styrke i forhandlingene med både Cristina og Marianne. Vi anbefaler ikke å flytte dersom vi kan få til en god løsning på Løkenes — men det er godt å vite at det finnes reelle alternativer i nærheten.</p>
   </div>
+
+  <div class="card" style="border:2px solid #e09a30;background:#fffbf0">
+    <h2 style="color:#854F0B">⭐ Særlig interessant: Gård til salgs — kjøpsmulighet!</h2>
+    <p>Denne gården selges og alle plasser sies opp. <strong>Kan noen av oss kjøpe den og drive den selv?</strong> Dette kan være en unik mulighet til å etablere noe helt på egne premisser.</p>
+    <a href="https://www.finn.no/recommerce/forsale/search?q=3+ledige+stall+plasser" target="_blank"
+       style="display:inline-block;margin-top:0.5rem;background:var(--amber-light);color:var(--amber);border:1px solid #FAC775;border-radius:8px;padding:6px 16px;font-size:13px;font-weight:600;text-decoration:none">
+      Se annonse på FINN →
+    </a>
+  </div>
+
   <div id="stabgrid"></div>
+
   <div class="card amber">
     <h2>Kostnader ved å flytte</h2>
     <ul class="rlist" id="movecost"></ul>
@@ -398,7 +438,8 @@ const horses = [
 const cHorses = [
   { o:'Cristina',   h:'Angelo',       img:'Angelo.jpg',         fb:'Løkenes gård1.jpg' },
   { o:'Cristina',   h:'Tessa',        img:'Tessa.jpg',          fb:'Løkenes gård2.jpg' },
-  { o:'Cristina',   h:'Buddy Friman', img:'Buddy.jpg',          fb:'Friman.jpg' },
+  { o:'Cristina',   h:'Friman (ponni)',img:'Friman.jpg',         fb:'Buddy.jpg' },
+  { o:'Jeanette',   h:'Buddy (ponni)', img:'Buddy.jpg',          fb:'Friman.jpg' },
   { o:'Fredrikke',  h:'Dario',        img:'Dario.jpg',          fb:'hest løkenes.jpg' },
   { o:'Fredrikke',  h:'Scalas',       img:'scalas.jpg',         fb:'Løkenes gård3.jpg' },
   { o:'Fredrikke',  h:'Equitana',     img:'Equitana.jpg',       fb:'Løkenes gård4.jpg' },
@@ -499,11 +540,11 @@ function calcB() {
   document.getElementById('ei').textContent = NOK(ex * 7200);
   document.getElementById('sv').textContent = st;
   document.getElementById('sc').textContent = NOK(st * 200);
-  const sc=st*200, br=(9+ex)*1000, fo=9*800, bf=9*300, kp=9*400, mn=8000, fl=3500, ins=1500, misc=2000;
+  const sc=st*200, br=18000, fo=9*800, bf=9*300, kp=9*400, mn=8000, fl=3500, ins=1500, misc=2000;
   const tc=br+fo+bf+kp+mn+fl+ins+sc+misc, inc=64800+ex*7200, sur=inc-tc;
   document.getElementById('btab').innerHTML =
     `<thead><tr><th>Post</th><th style="text-align:right">Beløp/mnd</th></tr></thead><tbody>` +
-    [['Boksleie Marianne ('+(9+ex)+'× 1 000)', br,'c'],
+    [['Boksleie til Marianne (fast 18 bokser × 1 000)', br,'c'],
      ['Høy og betfiber (9 hester)', fo+bf,'c'],
      ['Komplett fôr (9 hester)', kp,'c'],
      ['Tømming av møkk (2 × 4 000)', mn,'c'],
@@ -534,7 +575,7 @@ calcB();
 const bdata = {
   a: { l:'Alternativ A — eiergruppen overtar (med stallhjelp)',
        inc:[['Private oppstallører (9 × 7 200)',64800],['Nye bokser, estimert 3 × 7 200',21600]],
-       cos:[['Boksleie Marianne (12 × 1 000)',12000],['Høy og betfiber (9 hester)',9900],
+       cos:[['Boksleie Marianne (fast 18 × 1 000)',18000],['Høy og betfiber (9 hester)',9900],
             ['Komplett fôr (9 hester)',3600],['Tømming av møkk (2 × 4 000)',8000],
             ['Flis / strø',3500],['Lønnet stallhjelp (30t × 200)',6000],
             ['Vet / medisin buffer',2000],['Strøm, vann, avg.',2500],
@@ -607,24 +648,35 @@ document.getElementById('shifts').innerHTML = [
 ].map(s => `<li><div><div class="rt">${s.o}</div><div class="rs">${s.b}</div></div></li>`).join('');
 
 document.getElementById('stabgrid').innerHTML = [
-  {n:'Fossum Rideanlegg',    s:'Bærum',        d:'~10 km', p:'6 500–7 500', rh:true,  nt:'Etablert anlegg med ridehus. Aktivt rideklubbmiljø.'},
-  {n:'Bjørnegård Rideskole', s:'Bærum',        d:'~12 km', p:'6 500–8 000', rh:true,  nt:'Rideskole med private plasser. God infrastruktur.'},
-  {n:'Høvik Rideanlegg',     s:'Bærum',        d:'~14 km', p:'ca. 7 000',   rh:true,  nt:'Godt vedlikeholdt. Sjekk ledig kapasitet direkte.'},
-  {n:'Søndre Borgen Gård',   s:'Vestby',       d:'~35 km', p:'5 500–6 500', rh:true,  nt:'Lengre unna, men lavere pris. Nyere anlegg.'},
-  {n:'Privat boks-leie',     s:'Asker-regionen',d:'Varierer',p:'2 500–4 500',rh:false, nt:'Noen gårder leier ut enkeltbokser. Full kontroll, men full egendriving.'},
+  { n:'Sidde stall', s:'Asker-området', d:'—', p:'Se FINN', rh:false,
+    url:'https://www.finn.no/recommerce/forsale/search?q=ledig+stallplass+sidde',
+    nt:'Ledig stallplass. Kontakt via FINN for detaljer om fasiliteter og pris.' },
+  { n:'Helpensjon, alt inkludert — Åros', s:'Åros, Røyken', d:'~20 km', p:'Se FINN', rh:false,
+    url:'https://www.finn.no/recommerce/forsale/search?q=helpensjon+%C3%85ros',
+    nt:'Helpensjon der alt er inkludert. Sjeldent konsept — alt stell ivaretas av stallen.' },
+  { n:'Silkestallen — Åros', s:'Åros, Røyken', d:'~20 km', p:'Se FINN', rh:false,
+    url:'https://www.finn.no/recommerce/forsale/search?q=Silkestallen+%C3%85ros',
+    nt:'Ledig stallplass på Silkestallen i Åros. Se FINN for oppdatert pris og info.' },
+  { n:'Nedre Bryhn Stall', s:'Asker-regionen', d:'—', p:'Se FINN', rh:false,
+    url:'https://www.finn.no/recommerce/forsale/search?q=Nedre+Bryhn+stall',
+    nt:'Ledig stallplass på Nedre Bryhn. Kontakt via FINN for detaljer.' },
+  { n:'Øvre Bryhn Stall', s:'Asker-regionen', d:'—', p:'Se FINN', rh:false,
+    url:'https://www.finn.no/recommerce/forsale/search?q=%C3%98vre+Bryhn+stall',
+    nt:'Ledig stallplass på Øvre Bryhn. Kontakt via FINN for detaljer.' },
 ].map(s => `
   <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:.5rem">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:.75rem">
       <div>
         <div style="font-weight:600;font-size:15px">${s.n}</div>
-        <div style="font-size:13px;color:var(--muted)">${s.s} · ${s.d}</div>
+        <div style="font-size:13px;color:var(--muted)">${s.s}${s.d !== '—' ? ' · ' + s.d : ''}</div>
       </div>
-      <div style="display:flex;gap:6px;flex-wrap:wrap">
-        <span class="badge blue">kr ${s.p}/mnd</span>
-        <span class="badge ${s.rh?'green':'gray'}">${s.rh?'Har ridehus':'Uten ridehus'}</span>
-      </div>
+      <span class="badge blue">${s.p}/mnd</span>
     </div>
-    <p style="font-size:13px;color:var(--muted);margin:0">${s.nt}</p>
+    <p style="font-size:13px;color:var(--muted);margin:0 0 0.75rem">${s.nt}</p>
+    <a href="${s.url}" target="_blank"
+       style="display:inline-block;background:var(--blue-light);color:var(--blue);border:1px solid #B5D4F4;border-radius:8px;padding:5px 14px;font-size:13px;font-weight:600;text-decoration:none">
+      Se på FINN →
+    </a>
   </div>`).join('');
 
 document.getElementById('movecost').innerHTML = [
